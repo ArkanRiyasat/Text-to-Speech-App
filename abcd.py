@@ -25,5 +25,9 @@ def convert_text_to_speech():
     except Exception as e:
         return str(e), 500
 
-if __name__ == '__main__':
-    app.run(debug=True)
+from vercel_flask import VercelFlask
+
+app = VercelFlask(app)
+
+def handler(event, context):
+    return app(event, context)
